@@ -1,10 +1,16 @@
-
+#Librerias
 from flask import Flask, render_template, redirect, url_for, flash, request, session, g, jsonify
 from flask_cors import CORS, cross_origin
 import json
-
+######################################################
+######################################################
+# Configuracion
+from config import DevelopmentConfig
+######################################################
 app = Flask(__name__)
-
+cors  = CORS(app,resources={r"/foo":{"origins":"*"}})
+app.config.from_object(DevelopmentConfig)
+######################################################
 @app.route("/")
 def index_page():
     return "No deberia estar aqui"
