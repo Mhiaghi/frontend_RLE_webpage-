@@ -7,7 +7,7 @@ class DAOComentarios:
                                 user= "Mhiaghi@seidorvet", 
                                 password= "miguel1234!",
                                 database ="seidorpet",
-                                ssl_ca='./BaltimoreCyberTrustRoot.crt.pem')
+                                ssl_ca='/var/www/html/DigiCertGlobalRootCA.crt.pem')
 
     def search_our_comments(self, username_value):
         con = DAOComentarios.connection(self)

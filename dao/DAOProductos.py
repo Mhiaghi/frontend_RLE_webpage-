@@ -9,7 +9,7 @@ class DAOProducto:
                                 user= "Mhiaghi@seidorvet", 
                                 password= "miguel1234!",
                                 database ="seidorpet",
-                                ssl_ca='./BaltimoreCyberTrustRoot.crt.pem')
+                                ssl_ca='/var/www/html/DigiCertGlobalRootCA.crt.pem')
 
 
     def read(self,id):

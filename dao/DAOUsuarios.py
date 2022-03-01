@@ -9,7 +9,7 @@ class DAOUsuario:
                                 user= "Mhiaghi@seidorvet", 
                                 password= "miguel1234!",
                                 database ="seidorpet",
-                                ssl_ca='./BaltimoreCyberTrustRoot.crt.pem')
+                                ssl={'ca' : '/var/www/html/DigiCertGlobalRootCA.crt.pem'})
     def get_user_info(self, username_value):
         con = DAOUsuario.connection(self)
         cursor = con.cursor()
@@ -122,122 +122,6 @@ class DAOUsuario:
         finally:
             con.close()
 
-    # def read_id(self,id):
-    #     con = DAOUsuario.connection(self)
-    #     cursor = con.cursor()
-
-    #     try:
-    #         cursor.execute("SELECT idUsuario FROM usuarios where Username = %s",(id,))
-    #         return cursor.fetchall()
-    #     except:
-    #         return ()
-    #     finally:
-    #         con.close()
-
-    # def get_user_info(self, username_value):
-    #     con = DAOUsuario.connection(self)
-    #     cur = con.cursor()
-    #     try:
-    #         cur.execute("SELECT * FROM usuarios WHERE Username = %s", (username_value,))
-    #         user = cur.fetchone()
-    #         return user
-    #     except:
-    #         return("No user")
-    #     finally:
-    #         con.close()	
-    
-    # def update_user_info(self, data):
-    #     con = DAOUsuario.connection(self)
-    #     cur = con.cursor()
-    #     try:
-    #         cur.execute("UPDATE usuarios SET NombreCompleto=%s, Email = %s, Telefono = %s, Descripcion = %s, Street =%s, City = %s, Region = %s, Codigo_Postal =%s where Username = %s", [data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8]])
-    #         con.commit()
-    #         return("Usuario actualizado con exitos")
-    #     except:
-    #         return("Usuario no actualizado")
-    #     finally:
-    #         con.close()
-
-    # def add_users(self, username_value, password_value, email_value, type_value):
-    #     con = DAOUsuario.connection(self)
-    #     cur = con.cursor()
-    #     try:
-    #         cur.execute('INSERT INTO usuarios(Username, Password, Email, Tipo) VALUES (%s,%s,%s, %s)', [username_value,generate_password_hash(password_value),email_value, type_value])
-    #         con.commit()
-    #         return("Usuario insertado con exito")
-    #     except:
-    #         return("Correo duplicado")
-    #     finally:
-    #         con.close()
-
-    # def compare_passwords(self, username_value, password_value):
-    #     user = DAOUsuario.search_users(self,username_value)
-    #     if check_password_hash(user[2], password_value):
-    #         return True
-    #     else:
-    #         return False
-
-    # def insert(self,data):
-    #     con = DAOUsuario.connection(self)
-    #     cursor = con.cursor()
-    #     try:
-    #         cursor.execute("INSERT INTO usuarios(Username, Password, Email, Tipo) VALUES(%s,%s,%s,%s)",(data['username'], generate_password_hash(data['password']), data['email'],data['tipo'],))
-    #         con.commit()
-    #         return True
-    #     except:
-    #         con.rollback()
-    #         return False
-    #     finally:
-    #         con.close()
-
-    # def update(self,id,data):
-    #     con = DAOUsuario.connection(self)
-    #     cursor = con.cursor()
-
-    #     try:
-    #         cursor.execute("UPDATE usuarios SET Username=%s, Email=%s, Tipo=%s where idUsuario = %s",(data['username'], data['email'], data['tipo'], id,))
-    #         con.commit()
-    #         return True
-    #     except:
-    #         con.rollback()
-    #         return False
-    #     finally:
-    #         con.close()
-
-    # def delete(self,id):
-    #     con = DAOUsuario.connection(self)
-    #     cursor = con.cursor()
-
-    #     try:
-    #         cursor.execute("delete from usuarios where idUsuario = %s",(id,))
-    #         con.commit()
-    #         return True
-    #     except:
-    #         con.rollback()
-    #         return False
-    #     finally:
-    #         con.close()
-
-    # def insert_image(self, username_value, version):
-    #     con = DAOUsuario.connection(self)
-    #     cur = con.cursor()
-    #     try:
-    #         cur.execute('UPDATE usuarios SET Imagen = %s where Username = %s', [version,username_value])
-    #         con.commit()
-    #         return("Se ingreso con exito la imagen")
-    #     except:
-    #         return("No se inserto la version")
-    #     finally:
-    #         con.close()
-
-    # def get_image(self, username_value):
-    #     con = DAOUsuario.connection(self)
-    #     cur = con.cursor()
-    #     try:
-    #         cur.execute('SELECT Imagen FROM usuarios where Username = %s', [username_value])
-    #         version = cur.fetchone()
-    #         return version
-    #     except:
-    #         return 0 
-    #     finally:
-    #         con.close()
+usuario_db = DAOUsuario()
+usuarios = usuario_db.read(None)
+print(usuarios)
