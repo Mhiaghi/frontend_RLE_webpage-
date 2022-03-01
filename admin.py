@@ -16,7 +16,7 @@ carrito_db = DAOCarrito()
 #######################################################################################################
 
 bp = Blueprint('admin', __name__, url_prefix='/administrador')
-
+cors  = CORS(app,resources={r"/foo":{"origins":"*"}})
 @bp.route('/', methods = ["GET", "POST"])
 @cross_origin(origin='*',headers = ['Content-Type', 'Authorization'])
 def index_page():

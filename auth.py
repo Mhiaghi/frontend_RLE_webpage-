@@ -14,7 +14,7 @@ users_db = DAOUsuario()
 ##################################################################################################
 
 bp = Blueprint('auth', __name__, url_prefix='/autenticacion/')
-
+cors  = CORS(app,resources={r"/foo":{"origins":"*"}})
 @bp.route('/ingreso', methods = ["GET", "POST"])
 @cross_origin(origin='*',headers = ['Content-Type', 'Authorization'])
 def login_page():
