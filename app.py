@@ -16,8 +16,9 @@ def sobre_nosotros_pagina():
 @app.route('/comentarios', methods = ["GET", "POST"])
 @cross_origin(origin='*',headers = ['Content-Type', 'Authorization'])
 def comment_page():
-    comentarios = comentarios_db.search_all_comments()
+    
     if request.method == "POST":
+        comentarios = comentarios_db.search_all_comments()
         archivo_json = json.dumps(comentarios)
         return archivo_json
     else:
