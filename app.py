@@ -3,13 +3,35 @@ from flask import Flask, render_template, redirect, url_for, flash, request, ses
 from flask_cors import CORS, cross_origin
 import json
 ######################################################
+# Database
+
+from dao.DAOComentarios import DAOComentarios
+from dao.DAOUsuarios import DAOUsuario
+
 ######################################################
 # Configuracion
 from config import DevelopmentConfig
+#######################################################
+#Clases database
+
+comentarios_db = DAOComentarios()
+users_db = DAOUsuario()
 ######################################################
+#Blueprints
+
+import auth
+import user
+import admin
+######################################################
+
 app = Flask(__name__)
 cors  = CORS(app,resources={r"/foo":{"origins":"*"}})
 app.config.from_object(DevelopmentConfig)
+
+app.register_blueprint(auth.bp)
+app.register_blueprint(user.bp)
+app.register_blueprint(admin.bp)
+
 ######################################################
 @app.route("/")
 def index_page():
