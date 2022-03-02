@@ -8,7 +8,7 @@ class DAOCarrito:
                                 user= "Mhiaghi@seidorvet", 
                                 password= "miguel1234!",
                                 database ="seidorpet",
-                                ssl_ca='/var/www/html/DigiCertGlobalRootCA.crt.pem')
+                                ssl={'ca' : r'C:\Users\migue\Documents\webpage RLE\backend-test\dao\BaltimoreCyberTrustRoot.crt.pem'})
 
     def read(self,username ):
         con = DAOCarrito.connection(self)
