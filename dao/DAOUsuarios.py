@@ -9,7 +9,8 @@ class DAOUsuario:
                                 user= "Mhiaghi@seidorvet", 
                                 password= "miguel1234!",
                                 database ="seidorpet",
-                                ssl={'ca' : r'C:\Users\migue\Documents\webpage RLE\backend-test\dao\BaltimoreCyberTrustRoot.crt.pem'})
+                                ssl={'ca': '/var/www/html/BaltimoreCyberTrustRoot.crt.pem'})
+                                #ssl={'ca' : r'C:\Users\migue\Documents\webpage RLE\backend-test\dao\BaltimoreCyberTrustRoot.crt.pem'})
     def get_user_info(self, username_value):
         con = DAOUsuario.connection(self)
         cursor = con.cursor()
