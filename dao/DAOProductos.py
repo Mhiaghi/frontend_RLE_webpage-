@@ -6,7 +6,7 @@ class DAOProducto:
 
     def connection(self):
         return pymysql.connect( host="seidorvet.mysql.database.azure.com", 
-                                user= "Mhiaghi@seidorvet", 
+                                user= "Mhiaghi", 
                                 password= "miguel1234!",
                                 database ="seidorpet")
                                 #ssl={'ca': '/var/www/html/BaltimoreCyberTrustRoot.crt.pem'})

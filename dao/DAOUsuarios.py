@@ -6,7 +6,7 @@ class DAOUsuario:
 
     def connection(self):
         return pymysql.connect( host="seidorvet.mysql.database.azure.com", 
-                                user= "Mhiaghi@seidorvet", 
+                                user= "Mhiaghi", 
                                 password= "miguel1234!",
                                 database ="seidorpet")
                                 #ssl={'ca': '/var/www/html/BaltimoreCyberTrustRoot.crt.pem'})
@@ -51,16 +51,16 @@ class DAOUsuario:
     def add_users(self, username_value, password_value, email_value):
         con = DAOUsuario.connection(self)
         cur = con.cursor()
-        try:
-            cur.execute('INSERT INTO usuarios(Username, Password, Email) VALUES (%s,%s,%s)', [username_value,generate_password_hash(password_value),email_value])
-            con.commit()
-            cur.execute('INSERT INTO Cliente(Username) VALUES (%s)', [username_value])
-            con.commit()
-            return("Usuario insertado con exito")
-        except:
-            return("Correo duplicado")
-        finally:
-            con.close()
+        #try:
+        cur.execute('INSERT INTO usuarios(Username, Password, Email) VALUES (%s,%s,%s)', [username_value,generate_password_hash(password_value),email_value])
+        con.commit()
+        cur.execute('INSERT INTO Cliente(Username) VALUES (%s)', [username_value])
+        con.commit()
+        return("Usuario insertado con exito")
+        #except:
+        #    return("Correo duplicado")
+        #finally:
+        con.close()
     def update_user_info(self, NombreCompleto_value, Email_value, Telefono_value, Descripcion_value, Street_value, City_value, Region_value, Codigo_Postal_value, username_value):
         con = DAOUsuario.connection(self)
         cur = con.cursor()
